@@ -1,8 +1,20 @@
 var Redis = require('ioredis');
 
-var redis = new Redis({
+/////////////////////////////////
+// Direct
+/////////////////////////////////
+var redisDirect = new Redis();
+redisDirect.set('direct', 'bla');
+console.log('wrote direct');
+
+
+/////////////////////////////////
+// Sentinel way
+/////////////////////////////////
+var redisSentinel = new Redis({
   sentinels: [{ host: '0.0.0.0', port: 26379 }],
   name: 'master'
 });
 
-redis.set('foo', new Date());
+redisSentinel.set('sentinel', 'foo');
+console.log('wrote sentinel');

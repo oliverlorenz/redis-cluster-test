@@ -5,5 +5,7 @@ This is a test for running a redis cluster with sentinel, and connecting by [ior
 ```
 docker-compose up
 node test.js
-redis-cli GET foo
+[STRG+C]
+redis-cli GET direct
+redis-cli GET sentinel
 ```
